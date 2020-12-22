@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 02, 2020 at 04:27 PM
+-- Generation Time: Dec 22, 2020 at 02:42 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -44,12 +44,11 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`id_user`, `nom`, `prenom`, `username`, `mdp`, `question`, `reponse`) VALUES
 (1, 'grasset', 'matthias', 'salut', '83b74fc26f1287a551f21d7c9ccfa68e65adc6d331dfa02643e504708fc06f8b', 'Quel est le modèle de votre première voiture ?', 'scenic'),
-(3, 'cubase', 'test', 'mathiaz', '728bc1399ffcdd6eee98012fdcd7573f4239f0b28908ee2a6d79ce68729ac5ca', 'Quel est le modèle de votre première voiture ?', 'scenic'),
-(8, 'test', 'test', 'test', '728bc1399ffcdd6eee98012fdcd7573f4239f0b28908ee2a6d79ce68729ac5ca', 'Quel est le modèle de votre première voiture ?', 'scenic'),
-(9, 'test2', 'test2', 'test2', '728bc1399ffcdd6eee98012fdcd7573f4239f0b28908ee2a6d79ce68729ac5ca', 'Quel est le modèle de votre première voiture ?', 'scenic'),
 (10, 'Barbotin', 'Aurelien', 'aure31', '83b74fc26f1287a551f21d7c9ccfa68e65adc6d331dfa02643e504708fc06f8b', 'Quel est le modèle de votre première voiture ?', 'scenic'),
-(11, 'Barbotin', 'Aurelien', 'aure', '728bc1399ffcdd6eee98012fdcd7573f4239f0b28908ee2a6d79ce68729ac5ca', 'Quel est le modèle de votre première voiture ?', 'scenic'),
-(12, 'grasset', 'matthias', 'Tepey31', '75c4ec0328d2ec2e8cc1cfecda70808ab55a68645a100cd7b88b18ed9d44fd5d', 'Quel est le modèle de votre première voiture ?', 'clio');
+(11, 'Barbotin', 'Aurelien', 'aure', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'Quel est le modèle de votre première voiture ?', 'scenic'),
+(16, 'test2', 'test2', 'test2', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'Quel est le modèle de votre première voiture ?', 'scenic'),
+(17, 'test', 'test', 'test', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'Quel est le modèle de votre première voiture ?', 'clio'),
+(18, 'test4', 'test4', 'test4', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'Quel est le nom de votre premier animal dosmestique ?', 'polux');
 
 -- --------------------------------------------------------
 
@@ -61,8 +60,18 @@ CREATE TABLE `acteur` (
   `id_acteur` int(11) NOT NULL,
   `acteur` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `logo` int(11) NOT NULL
+  `logo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `acteur`
+--
+
+INSERT INTO `acteur` (`id_acteur`, `acteur`, `description`, `logo`) VALUES
+(1, 'Formation_co', 'Formation&co est une association française présente sur tout le territoire.\r\nNous proposons à des personnes issues de tout milieu de devenir entrepreneur grâce à un crédit et un accompagnement professionnel et personnalisé.\r\nNotre proposition : \r\nun financement jusqu’à 30 000€ ;\r\nun suivi personnalisé et gratuit ;\r\nune lutte acharnée contre les freins sociétaux et les stéréotypes.\r\n\r\nLe financement est possible, peu importe le métier : coiffeur, banquier, éleveur de chèvres… . Nous collaborons avec des personnes talentueuses et motivées.\r\nVous n’avez pas de diplômes ? Ce n’est pas un problème pour nous ! Nos financements s’adressent à tous.\r\n', './images/formation_co.png'),
+(2, 'Protectpeople ', 'Protectpeople finance la solidarité nationale.\r\nNous appliquons le principe édifié par la Sécurité sociale française en 1945 : permettre à chacun de bénéficier d’une protection sociale.\r\n\r\nChez Protectpeople, chacun cotise selon ses moyens et reçoit selon ses besoins.\r\nProectecpeople est ouvert à tous, sans considération d’âge ou d’état de santé.\r\nNous garantissons un accès aux soins et une retraite.\r\nChaque année, nous collectons et répartissons 300 milliards d’euros.\r\nNotre mission est double :\r\nsociale : nous garantissons la fiabilité des données sociales ;\r\néconomique : nous apportons une contribution aux activités économiques.\r\n\r\n\r\n', './images/protectpeople.png'),
+(3, 'Dsa France', 'Dsa France accélère la croissance du territoire et s’engage avec les collectivités territoriales.\r\nNous accompagnons les entreprises dans les étapes clés de leur évolution.\r\nNotre philosophie : s’adapter à chaque entreprise.\r\nNous les accompagnons pour voir plus grand et plus loin et proposons des solutions de financement adaptées à chaque étape de la vie des entreprises\r\n\r\n', './images/Dsa_france.png'),
+(4, 'CDE', 'La CDE (Chambre Des Entrepreneurs) accompagne les entreprises dans leurs démarches de formation. \r\nSon président est élu pour 3 ans par ses pairs, chefs d’entreprises et présidents des CDE.\r\n\r\n\r\n\r\n', './images/CDE.png');
 
 -- --------------------------------------------------------
 
@@ -74,9 +83,20 @@ CREATE TABLE `post` (
   `id_post` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_acteur` int(11) NOT NULL,
+  `post` text NOT NULL,
   `date_add` date NOT NULL,
-  `post` text NOT NULL
+  `like_count` int(11) DEFAULT '0',
+  `dislike_count` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`id_post`, `id_user`, `id_acteur`, `post`, `date_add`, `like_count`, `dislike_count`) VALUES
+(1, 11, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non nulla sagittis, lacinia magna ut, suscipit est. Suspendisse a enim nec ligula laoreet rhoncus fringilla vitae sem. Sed non enim sollicitudin, fermentum tellus sagittis, mattis nibh. Quisque et mattis quam, vitae ullamcorper magna. Mauris non sodales justo. Donec vitae libero varius elit tincidunt efficitur ut id neque. Ut mattis lorem a luctus pharetra. In ultricies facilisis mattis. Quisque elementum lacinia justo, ac rutrum enim ultrices non.\r\n\r\nNullam laoreet nulla ac accumsan lobortis. Integer placerat semper libero. Quisque at porta diam, sit amet sollicitudin est. Praesent id congue augue. Aliquam porttitor ultricies urna, a efficitur velit egestas id. Quisque nisi tortor, cursus sed finibus in, consequat sit amet orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis viverra mi. Duis condimentum sapien a sapien elementum, ac hendrerit quam maximus. Etiam varius velit a fringilla posuere.\r\n\r\nCras auctor, nibh in auctor consectetur, turpis justo lobortis ligula, malesuada congue magna tortor quis ligula. Vestibulum non fringilla nisi. Cras a finibus mauris. Nullam gravida purus id metus sagittis accumsan. Aliquam eros urna, condimentum nec efficitur in, tempor at lectus. Donec cursus ut leo quis dapibus. Cras ut elit ut arcu tincidunt varius.\r\n\r\n3 paragraphes, 200 mots, 1347 caractères de Lorem Ipsum généré', '2020-12-14', 0, 0),
+(82, 11, 2, 'test 1 du 22/12/2020', '2020-12-22', 0, 0),
+(83, 11, 3, 'test 1 du 22/12/2020', '2020-12-22', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -87,8 +107,17 @@ CREATE TABLE `post` (
 CREATE TABLE `vote` (
   `id_user` int(11) NOT NULL,
   `id_acteur` int(11) NOT NULL,
+  `id_vote` int(11) NOT NULL,
   `vote` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vote`
+--
+
+INSERT INTO `vote` (`id_user`, `id_acteur`, `id_vote`, `vote`) VALUES
+(1, 1, 1, -1),
+(11, 1, 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -126,25 +155,25 @@ ALTER TABLE `vote`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `acteur`
 --
 ALTER TABLE `acteur`
-  MODIFY `id_acteur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_acteur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `vote`
 --
 ALTER TABLE `vote`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
