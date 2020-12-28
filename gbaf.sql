@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 22, 2020 at 02:42 PM
+-- Generation Time: Dec 28, 2020 at 07:19 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -81,22 +81,22 @@ INSERT INTO `acteur` (`id_acteur`, `acteur`, `description`, `logo`) VALUES
 
 CREATE TABLE `post` (
   `id_post` int(11) NOT NULL,
+  `names` varchar(255) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_acteur` int(11) NOT NULL,
   `post` text NOT NULL,
-  `date_add` date NOT NULL,
-  `like_count` int(11) DEFAULT '0',
-  `dislike_count` int(11) DEFAULT '0'
+  `date_add` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `post`
 --
 
-INSERT INTO `post` (`id_post`, `id_user`, `id_acteur`, `post`, `date_add`, `like_count`, `dislike_count`) VALUES
-(1, 11, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non nulla sagittis, lacinia magna ut, suscipit est. Suspendisse a enim nec ligula laoreet rhoncus fringilla vitae sem. Sed non enim sollicitudin, fermentum tellus sagittis, mattis nibh. Quisque et mattis quam, vitae ullamcorper magna. Mauris non sodales justo. Donec vitae libero varius elit tincidunt efficitur ut id neque. Ut mattis lorem a luctus pharetra. In ultricies facilisis mattis. Quisque elementum lacinia justo, ac rutrum enim ultrices non.\r\n\r\nNullam laoreet nulla ac accumsan lobortis. Integer placerat semper libero. Quisque at porta diam, sit amet sollicitudin est. Praesent id congue augue. Aliquam porttitor ultricies urna, a efficitur velit egestas id. Quisque nisi tortor, cursus sed finibus in, consequat sit amet orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis viverra mi. Duis condimentum sapien a sapien elementum, ac hendrerit quam maximus. Etiam varius velit a fringilla posuere.\r\n\r\nCras auctor, nibh in auctor consectetur, turpis justo lobortis ligula, malesuada congue magna tortor quis ligula. Vestibulum non fringilla nisi. Cras a finibus mauris. Nullam gravida purus id metus sagittis accumsan. Aliquam eros urna, condimentum nec efficitur in, tempor at lectus. Donec cursus ut leo quis dapibus. Cras ut elit ut arcu tincidunt varius.\r\n\r\n3 paragraphes, 200 mots, 1347 caractères de Lorem Ipsum généré', '2020-12-14', 0, 0),
-(82, 11, 2, 'test 1 du 22/12/2020', '2020-12-22', 0, 0),
-(83, 11, 3, 'test 1 du 22/12/2020', '2020-12-22', 0, 0);
+INSERT INTO `post` (`id_post`, `names`, `id_user`, `id_acteur`, `post`, `date_add`) VALUES
+(88, 'matthias', 1, 1, 'test1', '2020-12-23'),
+(89, 'Aurelien', 11, 3, 'test1', '2020-12-23'),
+(90, 'Aurelien', 11, 2, 'test1', '2020-12-27'),
+(91, 'Aurelien', 11, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non nulla sagittis, lacinia magna ut, suscipit est. Suspendisse a enim nec ligula laoreet rhoncus fringilla vitae sem. Sed non enim sollicitudin, fermentum tellus sagittis, mattis nibh. Quisque et mattis quam, vitae ullamcorper magna. Mauris non sodales justo. Donec vitae libero varius elit tincidunt efficitur ut id neque. Ut mattis lorem a luctus pharetra. In ultricies facilisis mattis. Quisque elementum lacinia justo, ac rutrum enim ultrices non. Nullam laoreet nulla ac accumsan lobortis. Integer placerat semper libero. Quisque at porta diam, sit amet sollicitudin est. Praesent id congue augue. Aliquam porttitor ultricies urna, a efficitur velit egestas id. Quisque nisi tortor, cursus sed finibus in, consequat sit amet orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis viverra mi. Duis condimentum sapien a sapien elementum, ac hendrerit quam maximus. Etiam varius velit a fringilla posuere. Cras auctor, nibh in auctor consectetur, turpis justo lobortis ligula, malesuada congue magna tortor quis ligula. Vestibulum non fringilla nisi. Cras a finibus mauris. Nullam gravida purus id metus sagittis accumsan. Aliquam eros urna, condimentum nec efficitur in, tempor at lectus. Donec cursus ut leo quis dapibus. Cras ut elit ut arcu tincidunt varius. 3 paragraphes, 200 mots, 1347 caractères de Lorem Ipsum généré', '2020-12-27');
 
 -- --------------------------------------------------------
 
@@ -105,19 +105,20 @@ INSERT INTO `post` (`id_post`, `id_user`, `id_acteur`, `post`, `date_add`, `like
 --
 
 CREATE TABLE `vote` (
+  `id_vote` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_acteur` int(11) NOT NULL,
-  `id_vote` int(11) NOT NULL,
-  `vote` int(11) NOT NULL
+  `vote` enum('Likes','Dislikes') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `vote`
 --
 
-INSERT INTO `vote` (`id_user`, `id_acteur`, `id_vote`, `vote`) VALUES
-(1, 1, 1, -1),
-(11, 1, 0, 1);
+INSERT INTO `vote` (`id_vote`, `id_user`, `id_acteur`, `vote`) VALUES
+(102, 11, 1, 'Likes'),
+(103, 11, 2, 'Dislikes'),
+(104, 11, 4, 'Likes');
 
 --
 -- Indexes for dumped tables
@@ -145,7 +146,7 @@ ALTER TABLE `post`
 -- Indexes for table `vote`
 --
 ALTER TABLE `vote`
-  ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`id_vote`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -167,13 +168,13 @@ ALTER TABLE `acteur`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `vote`
 --
 ALTER TABLE `vote`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_vote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
