@@ -1,73 +1,5 @@
 <?php
 session_start();
-require_once('model/Manager.php');
-
-
-
-if(isset($_SESSION['id_user'])&& !empty($_SESSION['id_user']))
-{
-        $user = htmlspecialchars($_SESSION['id_user']);
-
-        $requser = $bdd->prepare('SELECT * FROM account WHERE id_user = ?');
-        $requser->execute(array($_SESSION['id_user']));
-        $userinfo = $requser->fetch();
-        
-        if(isset($_GET['id'])&& !empty($_GET['id']))
-        {
-                $getid = htmlspecialchars($_GET['id']);
-
-                $req = $bdd->prepare('SELECT * FROM acteur WHERE id_acteur = ?');
-                $req->execute(array($getid));
-                $reqacteur = $req->rowCount();
-
-                    $reqcomt = $bdd->prepare('SELECT id_post, names, id_user, id_acteur, post, date_add  FROM post WHERE id_user = ? AND id_acteur = ?');
-                    $reqcomt->execute(array($user, $getid));
-                    $reqcomt = $reqcomt->fetch();
-                   
-                   
-                        if(isset($_POST['textcomment']) && !empty ($_POST['textcomment'])) 
-                        {
-                            $name = htmlspecialchars($userinfo['prenom']);
-                            $comment = htmlspecialchars($_POST['textcomment']);
-                            if($reqcomt == 0){
-
-                            $addcomment = $bdd->prepare('INSERT INTO post(names, id_user, id_acteur, post, date_add) VALUES (?, ?, ?, ?,  NOW() )');
-                            $addcomment->execute(array($name, $user, $getid, $comment));
-                            $addcomment = $addcomment->rowCount();
-
-                            header("Location : comment.php?id=" .$_GET['id']);
-
-                        }else {
-                            //header("Location : comment.php?id=" .$_GET['id']);
-                            ?>
-                        <script>window.alert("interdit d'acces ! Vous ne pouvez commenter qu\'une seul fois !")</script>
-                    <?php
-                        }
-                    }else {
-                        header("Location : comment.php?id=" .$_GET['id']);
-                    }
-                }else {
-                    echo 'Selectionner un acteur  !';
-                }
-}else {
-    header("Location : connexion.php");
-}
-
-$requser = $bdd->prepare('SELECT * FROM account WHERE id_user = ?');
-$requser->execute(array($_SESSION['id_user']));
-
-$getcomment = $bdd->prepare('SELECT * FROM post WHERE id_acteur = ?');
-$getcomment->execute(array($getid));
-
-$getlikes = $bdd->prepare('SELECT COUNT(*) AS like_count FROM vote WHERE id_acteur = :acteur AND vote = :Likes_');
-$getlikes->execute(array('acteur' => $getid, 'Likes_' => 'Likes'));
-$getlikes = $getlikes->fetch();
-$like_count = $getlikes['like_count'];
-
-$getdislikes = $bdd->prepare('SELECT COUNT(*) AS dislike_count FROM vote WHERE id_acteur = :acteur AND vote = :Dislikes_');
-$getdislikes->execute(array('acteur' => $getid, 'Dislikes_' => 'Dislikes'));
-$getdislikes = $getdislikes->fetch();
-$dislike_count = $getdislikes['dislike_count'];
 
 ?>
 <html>
@@ -83,9 +15,9 @@ $dislike_count = $getdislikes['dislike_count'];
 <body>
 
     <!-- HEADER -->
-    <div class="block">
+    <div class="container-fluid">
     <div class="info">
-    <img src="images/logo.jpg" alt="..." class="img-thumbnail">
+    <img src="images/logo.jpg" id="img-logo-profil" alt="..." class="img-thumbnail">
         <div class="info-name">
             <h4>
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor"
@@ -96,11 +28,13 @@ $dislike_count = $getdislikes['dislike_count'];
                     <path fill-rule="evenodd"
                         d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
                 </svg>
-                <?= $userinfo['nom'];?> <?= $userinfo['prenom']; ?>
+                <?= $_SESSION['nom'];?> <?= $_SESSION['prenom']; ?>
             </h4>
             <br>
+            <div class="info-button">
             <a class="back-profil" href="profil.php?id=<?php echo $_SESSION['id_user']; ?>"> Retour à la page
                 profil</a></em>
+            </div>
         </div>
         </div>
     <?php
@@ -111,9 +45,10 @@ while($infoacteur = $req->fetch())
     <hr>
     
     <!-- Section acteurs -->
+    <div class="container-fluid">
     <div class="section-presentation">
         <div class="logo-profil">
-        <img src="<?= htmlspecialchars($infoacteur['logo']); ?>" class="rounded mx-auto d-block" alt="logo-acteur">
+        <img src="<?= htmlspecialchars($infoacteur['logo']); ?>" class="rounded mx-auto d-block" id="logo-acteur" alt="logo-acteur">
         </div>
         <br>
         <div class="title-acteur">
@@ -123,13 +58,14 @@ while($infoacteur = $req->fetch())
             <p class="content-acteur"><?= nl2br(htmlspecialchars($infoacteur['description'])); ?>
         </div>
     </div>
+</div>
     <hr>
     <?php
 }
 $req->closeCursor();
 ?>
     <!-- Section commentaire -->
-    <div class="d-flex flex-row">
+    <div class="d-flex flex-row" id="comment-add">
         <h3>Commentaires</h3>
         <div class="p-2">
             <a href="#text-comment" class="js-modal">Ajouter un commentaire</a>
@@ -163,7 +99,7 @@ $req->closeCursor();
   <div class="card-header">De <?= htmlspecialchars($reqcomment['names']);?> le : <?= htmlspecialchars($reqcomment['date_add']);?></div>
   <div class="card-body" id="card-body">
     <h5 class="card-title">Commentaire</h5>
-    <p class="text-justify" ><?= htmlspecialchars($reqcomment['post']);?></p>
+    <p class="text-justify"><?= htmlspecialchars($reqcomment['post']);?></p>
   </div>
 </div>
 
@@ -176,17 +112,15 @@ $req->closeCursor();
         <form method="post">
 
             <label for="names" class="form-label" id="formComment">Poster un commentaire en tant que :</label>
-             <p name="names"><?= htmlspecialchars($userinfo['prenom']);?></p>
+            <p><?= $_SESSION['prenom']; ?></p>
             <textarea class="form-control" id="text-comment" name="textcomment" rows="8"></textarea>
-            <input type="hidden" name="acteur" value="<?= htmlspecialchars($userinfo['prenom']);?>">
+            <input type="hidden" name="prenom" value="<?= htmlspecialchars($_SESSION['prenom']);?>">
             <button type="submit" id="button-comment" class="btn btn-success" value="formenvoie">Envoyez</button>
         </form>
         </div>
     </div>
-    <footer>
-    <div class=footer-profil>
-    <p>Copyright | <a href="#" >Mentions légales </a></p>
-    </div>
-    </footer>
+    <?php 
+require('footer.php');
+?>
     </body>
 </html> 
