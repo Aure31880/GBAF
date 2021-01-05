@@ -1,6 +1,62 @@
 <?php
-session_start();
 
+session_start();
+require_once('model/Manager.php');
+include('redirection.php');
+
+      if(isset($_GET['id'])&& !empty($_GET['id']))
+      {
+              $getid = htmlspecialchars($_GET['id']);
+
+              
+              $req = $bdd->prepare('SELECT * FROM acteur WHERE id_acteur = ?');
+              $req->execute(array($getid));
+              $reqacteur = $req->rowCount();
+
+                  $reqcomt = $bdd->prepare('SELECT * FROM post WHERE id_user = ? AND id_acteur = ?');
+                  $reqcomt->execute(array($_SESSION['id_user'], $getid));
+                  $reqcomt = $reqcomt->fetch();
+                 
+                 
+                      if(isset($_POST['textcomment']) && !empty ($_POST['textcomment'])) 
+                      {
+                          
+                          $comment = htmlspecialchars($_POST['textcomment']);
+                          if($reqcomt == 0){
+
+                          $addcomment = $bdd->prepare('INSERT INTO post(id_user, id_acteur, post, date_add) VALUES (?, ?, ?,  NOW() )');
+                          $addcomment->execute(array($_SESSION['id_user'], $getid, $comment));
+                          $addcomment = $addcomment->rowCount();
+
+                          header("Location : comment.php?id=" .$_GET['id']);
+
+                      }else {
+                          ?>
+                      <script>window.alert("interdit d'acces ! Vous ne pouvez commenter qu\'une seul fois !");</script>
+                  <?php
+                      }
+                  }else {
+                      header("Location : comment.php?id=" .$_GET['id']);
+                  }
+              }else {
+                  echo 'Selectionner un acteur  !';
+              }
+
+// Récupération des commentaires //
+$getcomment = $bdd->prepare('SELECT *, a.nom name_user FROM account a INNER JOIN post  ON post.id_user = a.id_user WHERE id_acteur  = ? ');
+$getcomment->execute(array($getid));
+
+
+// Recuperation des votes 
+$getlikes = $bdd->prepare('SELECT COUNT(*) AS like_count FROM vote WHERE id_acteur = :acteur AND vote = :Likes_');
+$getlikes->execute(array('acteur' => $getid, 'Likes_' => 'Likes'));
+$getlikes = $getlikes->fetch();
+$like_count = $getlikes['like_count'];
+
+$getdislikes = $bdd->prepare('SELECT COUNT(*) AS dislike_count FROM vote WHERE id_acteur = :acteur AND vote = :Dislikes_');
+$getdislikes->execute(array('acteur' => $getid, 'Dislikes_' => 'Dislikes'));
+$getdislikes = $getdislikes->fetch();
+$dislike_count = $getdislikes['dislike_count'];
 ?>
 <html>
 
@@ -96,7 +152,7 @@ $req->closeCursor();
                 <div class="block">
     <div class="comment">
     <div  class="card bg-light mb-3"  id="card-mb3" >
-  <div class="card-header">De <?= htmlspecialchars($reqcomment['names']);?> le : <?= htmlspecialchars($reqcomment['date_add']);?></div>
+  <div class="card-header">De <?= htmlspecialchars($reqcomment['nom']); ?> le : <?= htmlspecialchars($reqcomment['date_add']);?></div>
   <div class="card-body" id="card-body">
     <h5 class="card-title">Commentaire</h5>
     <p class="text-justify"><?= htmlspecialchars($reqcomment['post']);?></p>
