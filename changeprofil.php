@@ -13,9 +13,9 @@ session_start();
 </head>
 
 <body>
-<div class="block">
+<div class="container-fluid">
     <div class="info">
-    <img src="images/logo.jpg" alt="..." class="img-thumbnail">
+    <img src="images/logo.jpg" alt="logo-gbaf" class="img-thumbnail" id="img-logo-profil">
         <div class="info-name">
             <h4>
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor"
@@ -29,21 +29,25 @@ session_start();
                 <?= $_SESSION['nom'];?> <?= $_SESSION['prenom']; ?>
             </h4>
             <br>
-            <a class="back-profil" href="profil.php?id=<?php echo $_SESSION['id_user']; ?>"> Retour au profil</a>
+            <div class="info-button">
+            <a class="back-profil" href="profil.php"> Retour au profil</a>
+            </div>
+            </div>
         </div>
-        </div>
+</div>
 <hr>
 
-<div id="block">
+<div id="container">
     <div class="title">
         <h3>Modifier profil</h3>
     </div>
     <br>
     <br>
     
+    <div class="update">
     <form method="post" action="changeprofil_post.php">
+    <div class="mb-3" id="update-profil">
 
-<div class="mb-3" id="update-profil">
     <h5>Modifier username</h5>
   <label for="old-username" class="form-label">Ancien username</label>
   <input type="text" class="form-control" id="old-username" name="old-username"  placeholder="Ancien username     ">
@@ -52,13 +56,14 @@ session_start();
   <label for="update-username" class="form-label">Nouveau username</label>
   <input type="text" class="form-control" id="update-username" name="new-username" placeholder="Nouveau username"><br>
 
-  <button type="submit" class="btn btn-success" name="upadatepass">Modifier</button>
+  <button type="submit" class="btn btn-success" name="updateusername">Modifier</button>
 </div>
 </form>
 
 <form method="post" action="changeprofil_post.php">
-
 <div class="mb-3" id="update-profil">
+
+
     <h5>Modifier password</h5>
   <label for="old-pass" class="form-label">Ancien password</label>
   <input type="text" class="form-control" id="odl-pass" name="old-pass" placeholder="Ancien password     ">
@@ -71,9 +76,11 @@ session_start();
   <label for="verify-pass" class="form-label">Valider  password</label>
   <input type="text" class="form-control" id="verify-pass" name="verify-pass" placeholder="Verifier password"><br>
 
-  <button type="submit" class="btn btn-success" name="upadatepass">Modifier</button>
+  <button type="submit" class="btn btn-success" name="updatepass">Modifier</button>
 </div>
 </form>
+</div>
+
 
 </body>
 <?php require('footer.php'); ?>
