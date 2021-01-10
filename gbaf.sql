@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 28, 2020 at 07:19 AM
+-- Generation Time: Jan 10, 2021 at 06:38 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -43,12 +43,8 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id_user`, `nom`, `prenom`, `username`, `mdp`, `question`, `reponse`) VALUES
-(1, 'grasset', 'matthias', 'salut', '83b74fc26f1287a551f21d7c9ccfa68e65adc6d331dfa02643e504708fc06f8b', 'Quel est le modèle de votre première voiture ?', 'scenic'),
-(10, 'Barbotin', 'Aurelien', 'aure31', '83b74fc26f1287a551f21d7c9ccfa68e65adc6d331dfa02643e504708fc06f8b', 'Quel est le modèle de votre première voiture ?', 'scenic'),
-(11, 'Barbotin', 'Aurelien', 'aure', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'Quel est le modèle de votre première voiture ?', 'scenic'),
-(16, 'test2', 'test2', 'test2', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'Quel est le modèle de votre première voiture ?', 'scenic'),
-(17, 'test', 'test', 'test', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'Quel est le modèle de votre première voiture ?', 'clio'),
-(18, 'test4', 'test4', 'test4', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'Quel est le nom de votre premier animal dosmestique ?', 'polux');
+(11, 'Barbotin', 'Aurelien', 'aure', '60303ae22b998861bce3b28f33eec1be758a213c86c93c076dbe9f558c11c752', 'Quel est le modèle de votre première voiture ?', 'scenic'),
+(12, 'test', 'test', 'test', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'Quel est le nom de votre premier animal dosmestique ?', 'polux');
 
 -- --------------------------------------------------------
 
@@ -81,7 +77,6 @@ INSERT INTO `acteur` (`id_acteur`, `acteur`, `description`, `logo`) VALUES
 
 CREATE TABLE `post` (
   `id_post` int(11) NOT NULL,
-  `names` varchar(255) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_acteur` int(11) NOT NULL,
   `post` text NOT NULL,
@@ -92,11 +87,11 @@ CREATE TABLE `post` (
 -- Dumping data for table `post`
 --
 
-INSERT INTO `post` (`id_post`, `names`, `id_user`, `id_acteur`, `post`, `date_add`) VALUES
-(88, 'matthias', 1, 1, 'test1', '2020-12-23'),
-(89, 'Aurelien', 11, 3, 'test1', '2020-12-23'),
-(90, 'Aurelien', 11, 2, 'test1', '2020-12-27'),
-(91, 'Aurelien', 11, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non nulla sagittis, lacinia magna ut, suscipit est. Suspendisse a enim nec ligula laoreet rhoncus fringilla vitae sem. Sed non enim sollicitudin, fermentum tellus sagittis, mattis nibh. Quisque et mattis quam, vitae ullamcorper magna. Mauris non sodales justo. Donec vitae libero varius elit tincidunt efficitur ut id neque. Ut mattis lorem a luctus pharetra. In ultricies facilisis mattis. Quisque elementum lacinia justo, ac rutrum enim ultrices non. Nullam laoreet nulla ac accumsan lobortis. Integer placerat semper libero. Quisque at porta diam, sit amet sollicitudin est. Praesent id congue augue. Aliquam porttitor ultricies urna, a efficitur velit egestas id. Quisque nisi tortor, cursus sed finibus in, consequat sit amet orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis viverra mi. Duis condimentum sapien a sapien elementum, ac hendrerit quam maximus. Etiam varius velit a fringilla posuere. Cras auctor, nibh in auctor consectetur, turpis justo lobortis ligula, malesuada congue magna tortor quis ligula. Vestibulum non fringilla nisi. Cras a finibus mauris. Nullam gravida purus id metus sagittis accumsan. Aliquam eros urna, condimentum nec efficitur in, tempor at lectus. Donec cursus ut leo quis dapibus. Cras ut elit ut arcu tincidunt varius. 3 paragraphes, 200 mots, 1347 caractères de Lorem Ipsum généré', '2020-12-27');
+INSERT INTO `post` (`id_post`, `id_user`, `id_acteur`, `post`, `date_add`) VALUES
+(104, 11, 1, 'test', '2021-01-04'),
+(105, 11, 4, 'test', '2021-01-04'),
+(106, 12, 1, 'test', '2021-01-04'),
+(107, 11, 2, 'test', '2021-01-04');
 
 -- --------------------------------------------------------
 
@@ -118,7 +113,11 @@ CREATE TABLE `vote` (
 INSERT INTO `vote` (`id_vote`, `id_user`, `id_acteur`, `vote`) VALUES
 (102, 11, 1, 'Likes'),
 (103, 11, 2, 'Dislikes'),
-(104, 11, 4, 'Likes');
+(104, 11, 4, 'Likes'),
+(105, 12, 1, 'Likes'),
+(106, 12, 2, 'Likes'),
+(107, 12, 4, 'Likes'),
+(108, 12, 3, 'Likes');
 
 --
 -- Indexes for dumped tables
@@ -156,7 +155,7 @@ ALTER TABLE `vote`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `acteur`
@@ -168,13 +167,13 @@ ALTER TABLE `acteur`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `vote`
 --
 ALTER TABLE `vote`
-  MODIFY `id_vote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id_vote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
