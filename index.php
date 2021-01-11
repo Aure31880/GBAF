@@ -11,21 +11,25 @@
 </head>
 
 <body>
-    <?php require 'header.php'; ?>
-    <div class="title-home">
-    <h1>Bienvenue sur l'application dédiée à la présentation des produits financiers du groupe ?</h1>
+    <?php require('header.php'); ?>
     <hr>
+    <div class="title-home">
+    <h1>Bienvenue sur l'application dédiée à la présentation des produits financiers du groupe</h1>
 </div>
-    <div class="card-2 text-white bg-dark mb-3" style="max-width: 18rem;max-height: 25rem;">
+    <div class="card-2 text-white bg-dark mb-3" style="max-width: 25rem;">
         <div class="card-body">
             <h3 class="card-title">Bienvenue</h3><br>
             <p>Connectez vous à votre espace</p>
             <p><a href="connexion.php" >Connexion</a></p><br>
             <p>Première visite ? Inscrivez-vous</p>
-            <p><a href="inscription.php">Inscription</a></p> 
+            <p><a href="inscription.php">Inscription</a></p>
         </div>
     </div>
-    <?php require 'footer.php';?>
+    <div class="footer-class">
+    <div class=footer-content-index>
+    <p>Copyright | <a href="#" >Mentions légales </a></p>
+    </div>
+    </div>
+   
 </body>
-
 </html>

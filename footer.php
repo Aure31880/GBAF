@@ -1,1 +1,4 @@
-<footer><p class="texte-blanc">Copyright | <a href="#" class="texte-blanc">Mentions légales </a></p></footer>
+
+    <div class=footer-content>
+    <p>Copyright | <a href="#" >Mentions légales </a></p>
+    </div>

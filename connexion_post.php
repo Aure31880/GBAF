@@ -13,17 +13,20 @@ if(isset($_POST['username']) && isset($_POST['mdp'])) {
 
       if($userexist == 1) {
 
-         $pass_hash = hash('sha256', $password);
-         if($userinfo['mdp'] === $pass_hash) {  
-
+      $pass_hash = hash('sha256', $password);
+      if($userinfo['mdp'] === $pass_hash) {  
+         
          $_SESSION['id_user'] = $userinfo['id_user'];
          $_SESSION['username'] = $userinfo['username'];
-         header("Location: profil.php?id=".$_SESSION['id_user']);
+         $_SESSION['nom'] = $userinfo['nom'];
+         $_SESSION['prenom'] = $userinfo['prenom'];
+
+         header("Location: profil.php");
       } else {
-         echo "Mauvais mot de passe!";
+         echo "Mauvais username !";
       }
    } else {
-      echo  "Mauvais pseudo !";
+      echo  "Mauvais mot de passe !";
    }
 }
 

@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once('model/Manager.php');
 
 if(isset($_POST['forminscription']))
@@ -45,10 +44,7 @@ if(isset($_POST['forminscription']))
                             'mdp' => $pass_hash,
                             'question' => $question,
                             'reponse' => $answer ));
-                            $_SESSION['id_user'] = $bdd->lastInsertId();
-                            $_SESSION['nouveaucompte'] = "Votre compte a bien été crée.";
-                            
-                        header("Location : profil.php?id=" .$_SESSION['id_user']);
+                            echo  "Votre compte a bien été créé ! <a href=\"connexion.php\">Me connecter</a>";
                     }else {
                         echo 'Oups erreur !';
                     }
@@ -62,4 +58,6 @@ if(isset($_POST['forminscription']))
             echo 'Oups erreur';
         }
     }
+}else {
+    echo 'introuvable !';
 }

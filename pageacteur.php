@@ -42,12 +42,12 @@ include('redirection.php');
                   echo 'Selectionner un acteur  !';
               }
 
-// Récupération des commentaires //
-$getcomment = $bdd->prepare('SELECT *, a.nom name_user FROM account a INNER JOIN post  ON post.id_user = a.id_user WHERE id_acteur  = ? ');
+// Récupération des commentaires 
+$getcomment = $bdd->prepare('SELECT *FROM account a INNER JOIN post  ON post.id_user = a.id_user WHERE id_acteur  = ? ');
 $getcomment->execute(array($getid));
 
 
-// Recuperation des votes 
+// Reéupération des votes 
 $getlikes = $bdd->prepare('SELECT COUNT(*) AS like_count FROM vote WHERE id_acteur = :acteur AND vote = :Likes_');
 $getlikes->execute(array('acteur' => $getid, 'Likes_' => 'Likes'));
 $getlikes = $getlikes->fetch();
@@ -88,7 +88,7 @@ $dislike_count = $getdislikes['dislike_count'];
             </h4>
             <br>
             <div class="info-button">
-            <a class="back-profil" href="profil.php?id=<?php echo $_SESSION['id_user']; ?>"> Retour à la page
+            <a class="back-profil" href="profil.php"> Retour à la page
                 profil</a></em>
             </div>
         </div>
@@ -152,7 +152,7 @@ $req->closeCursor();
                 <div class="block">
     <div class="comment">
     <div  class="card bg-light mb-3"  id="card-mb3" >
-  <div class="card-header">De <?= htmlspecialchars($reqcomment['nom']); ?> le : <?= htmlspecialchars($reqcomment['date_add']);?></div>
+  <div class="card-header">De <?= htmlspecialchars($reqcomment['username']); ?> le : <?= htmlspecialchars($reqcomment['date_add']);?></div>
   <div class="card-body" id="card-body">
     <h5 class="card-title">Commentaire</h5>
     <p class="text-justify"><?= htmlspecialchars($reqcomment['post']);?></p>

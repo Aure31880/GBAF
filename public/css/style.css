@@ -199,7 +199,7 @@ text-align: center;
 /* fin */
 
 /* footer */
-footer a {
+.footer-content a {
     color: black;
     text-decoration: none;
 }
