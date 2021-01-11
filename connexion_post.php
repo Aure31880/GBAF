@@ -23,10 +23,16 @@ if(isset($_POST['username']) && isset($_POST['mdp'])) {
 
          header("Location: profil.php");
       } else {
-         echo "Mauvais username !";
+         ?>
+         <script>window.alert("Alerte ! Mauvais password !")</script>
+         <a href="javascript:window.history.go(-1)">[ Retour ]</a>
+         <?php
       }
    } else {
-      echo  "Mauvais mot de passe !";
+      ?>
+         <script>window.alert("Alerte ! Mauvais username !")</script>
+         <a href="javascript:window.history.go(-1)">[ Retour ]</a>
+         <?php
    }
 }
 

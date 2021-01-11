@@ -60,7 +60,7 @@ session_start();
 </div>
 </form>
 
-<form method="post" action="changeprofil_post.php">
+<form method="post" action="updatepass_post.php">
 <div class="mb-3" id="update-profil">
 
 
