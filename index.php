@@ -13,7 +13,7 @@
 <body>
     <?php require 'header.php'; ?>
     <div class="title-home">
-    <h1>Bienvenue sur l'application dédiée à la présentation des produits financiers du groupe</h1>
+    <h1>Bienvenue sur l'application dédiée à la présentation des produits financiers du groupe ?</h1>
     <hr>
 </div>
     <div class="card-2 text-white bg-dark mb-3" style="max-width: 18rem;max-height: 25rem;">
@@ -22,7 +22,7 @@
             <p>Connectez vous à votre espace</p>
             <p><a href="connexion.php" >Connexion</a></p><br>
             <p>Première visite ? Inscrivez-vous</p>
-            <p><a href="inscription.php">Inscription</a></p>
+            <p><a href="inscription.php">Inscription</a></p> 
         </div>
     </div>
     <?php require 'footer.php';?>
