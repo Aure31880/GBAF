@@ -233,6 +233,15 @@ text-align: center;
 }
 /*...fin...*/
 
+/* mentions */
+
+.mentions-content h1{
+ text-align: center;
+}
+.mention-content p {
+    display: flex;
+}
+
 
 /* responsive tablette */
 
