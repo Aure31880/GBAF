@@ -127,7 +127,7 @@ while ($posts = $req->fetch())
                                 ?>
                             <p class="card-text"><?=  substr( $reduc, 0,800 )?></p>
 
-                            <em><a href="pageacteur.php?id=<?php echo ($posts['id_acteur']); ?>">Lire la suite</a></em>
+                            <em><a href="pageacteur.php?id=<?= ($posts['id_acteur']); ?>">Lire la suite</a></em>
                         </div>
                     </div>
                 </div>

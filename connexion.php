@@ -6,7 +6,7 @@ session_start();
 <hr>
 
 <?php ob_start(); ?>
-    <div class="card text-white bg-dark mb-3" style="max-width: 30%;">
+    <div class="card text-white bg-dark mb-3" id="card-connect">
         <form method="post" action="connexion_post.php">
             <h2 class="card-title">Connexion</h2>
             <div class="card-body">

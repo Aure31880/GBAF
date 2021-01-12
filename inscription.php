@@ -2,7 +2,7 @@
 <?php     require('header.php'); ?>
 <hr>
 <?php ob_start(); ?>
-<div class="card text-white bg-dark mb-3" style="max-width: 30%;">
+<div class="card text-white bg-dark mb-3">
     <div class="card-body">
         <h2 class="card-title">Inscription</h2>
         <form method="post" action="inscription_post.php" enctype="multipart/form-data">

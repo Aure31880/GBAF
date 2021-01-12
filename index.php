@@ -14,7 +14,7 @@
     <?php require('header.php'); ?>
     <hr>
     <div class="title-home">
-    <h1>Bienvenue sur l'application dédiée à la présentation des produits financiers du groupe</h1>
+    <h2>Bienvenue sur l'application dédiée à la présentation des produits financiers du groupe</h2>
 </div>
     <div class="card-2 text-white bg-dark mb-3" style="max-width: 25rem;">
         <div class="card-body">
