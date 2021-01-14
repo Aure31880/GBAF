@@ -9,6 +9,7 @@ include('redirection.php');
     <head>
         <title>Profil</title>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
             integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link href="public/css/style.css" rel="stylesheet" />
@@ -16,7 +17,7 @@ include('redirection.php');
 
     <body>
         <!-- HEADER -->
-        <div class="container-fluid">
+        <div class="content">
         <div class="info">
             <img src="images/logo.jpg" id="img-logo-profil" class="img-thumbnail">
             <div class="info-name">

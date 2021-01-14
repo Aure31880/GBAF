@@ -13,6 +13,7 @@
 <body>
     <?php require('header.php'); ?>
     <hr>
+    <div class="home">
     <div class="title-home">
     <h2>Bienvenue sur l'application dédiée à la présentation des produits financiers du groupe</h2>
 </div>
@@ -25,6 +26,7 @@
             <p><a href="inscription.php">Inscription</a></p>
         </div>
     </div>
+</div>
     <div class="footer-class">
     <div class=footer-content-index>
     <p>Copyright | <a href="#" >Mentions légales </a></p>

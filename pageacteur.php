@@ -28,7 +28,7 @@ include('redirection.php');
                           $addcomment->execute(array($_SESSION['id_user'], $getid, $comment));
                           $addcomment = $addcomment->rowCount();
 
-                          header("Location : comment.php?id=" .$_GET['id']);
+                          header("Location : pageacteur.php?id=" .$_GET['id']);
 
                       }else {
                           ?>
@@ -36,7 +36,7 @@ include('redirection.php');
                   <?php
                       }
                   }else {
-                      header("Location : comment.php?id=" .$_GET['id']);
+                      header("Location : pageacteur.php?id=" .$_GET['id']);
                   }
               }else {
                   echo 'Selectionner un acteur  !';
@@ -63,6 +63,7 @@ $dislike_count = $getdislikes['dislike_count'];
 <head>
     <title>Profil</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="public/css/style.css" rel="stylesheet" />
@@ -169,7 +170,7 @@ $req->closeCursor();
 
             <label for="names" class="form-label" id="formComment">Poster un commentaire en tant que :</label>
             <p><?= $_SESSION['prenom']; ?></p>
-            <textarea class="form-control" id="text-comment" name="textcomment" rows="8"></textarea>
+            <textarea class="form-control" id="text-comment" name="textcomment" rows="8" required></textarea>
             <input type="hidden" name="prenom" value="<?= htmlspecialchars($_SESSION['prenom']);?>">
             <button type="submit" id="button-comment" class="btn btn-success" value="formenvoie">Envoyez</button>
         </form>
