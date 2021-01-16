@@ -13,7 +13,6 @@ if(isset($_POST['forminscription']))
     $answer = htmlspecialchars($_POST['reponse']);
 
     // on verifie que les champs soient bien remplis
-    //var_dump('reponse');
     if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['username']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2']) AND !empty($_POST['question']) AND !empty($_POST['reponse']))
     {
         $nameLenght = strlen($name);

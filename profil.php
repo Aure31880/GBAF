@@ -108,7 +108,7 @@ include('redirection.php');
 
         <?php 
         
-// Récupérationn des infos de chaques acteurs    
+// Récupération des infos de chaques acteurs    
 $req = $bdd->query('SELECT * FROM acteur ');
 
 while ($posts = $req->fetch()) 
