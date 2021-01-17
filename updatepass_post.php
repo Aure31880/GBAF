@@ -8,6 +8,7 @@ if(isset($_POST['updatepass']))
     $newpass =htmlspecialchars($_POST['new-pass']);
     $verifypass = htmlspecialchars($_POST['verify-pass']);
 
+    // Si les champs sont remplis ont verifie dans la bdd si les informations sont corrects 
     if(isset($_POST['old-pass'], $_POST['new-pass'], $_POST['verify-pass']) && !empty($_POST['old-pass']) && !empty($_POST['new-pass']) && !empty($_POST['verify-pass'])) 
     {
         $req = $bdd->prepare('SELECT * FROM account WHERE id_user = ?');
@@ -22,7 +23,8 @@ if(isset($_POST['updatepass']))
             {
 
             $pass_hash = hash('sha256', $newpass);
-
+            
+            // Si les informations sont corrects alors on modifie le password
             $update = $bdd->prepare('UPDATE account SET mdp = ? WHERE id_user = ?');
             $update->execute(array($pass_hash, $_SESSION['id_user']));
 

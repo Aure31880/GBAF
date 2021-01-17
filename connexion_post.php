@@ -6,6 +6,7 @@ if(isset($_POST['username']) && isset($_POST['mdp'])) {
    $pseudo = htmlspecialchars($_POST['username']);
    $password = htmlspecialchars($_POST['mdp']);
 
+      // Vérifie si l'utilisateur  existe
       $req = $bdd->prepare("SELECT * FROM account WHERE username = ?");
       $req->execute(array($pseudo));
       $userinfo = $req->fetch();  

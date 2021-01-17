@@ -5,17 +5,19 @@ require_once('model/Manager.php');
 
 if(isset($_POST['changePass']))
 {
-    // on sécurise les entrées
+    // On sécurise les entrées
     $pseudo = htmlspecialchars($_POST['username']);
     $question = htmlspecialchars($_POST['question']);
     $answer = htmlspecialchars($_POST['reponse']);
 
     if(!empty($_POST['username']) AND !empty($_POST['question']) AND !empty($_POST['reponse']))
     {
-        //on verifie si l'utilisateur existe
+        //On verifie si l'utilisateur et le pseudo existe
         $requser = $bdd->prepare('SELECT * FROM account WHERE username = ? AND question = ? AND reponse = ?');
         $requser->execute(array($pseudo, $question,$answer));
         $userexist = $requser->rowCount();
+
+        // Si l'utilisateur existe on ouvre sa session et on le renvoie sur le formulaire pour modifier son password
         if($userexist == 1)
         {
             $memberinfo = $requser->fetch();
@@ -37,7 +39,7 @@ if(isset($_POST['changePass']))
 
 if(isset($_POST['passmodif']))
 {
-    // on remplace l'ancien password
+    // On remplace l'ancien password
     $pseudo = htmlspecialchars($_POST['username']);
     $mdp = htmlspecialchars($_POST['newmdp']);
     $mdp2 = htmlspecialchars($_POST['newmdp2']);

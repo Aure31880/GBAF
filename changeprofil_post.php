@@ -7,6 +7,7 @@ if(isset($_POST['updateusername']))
     $oldusername = htmlspecialchars($_POST['old-username']);
     $newusername = htmlspecialchars($_POST['new-username']);
 
+    // Si les champs sont remplis ont verifie dans la bdd si les informations sont corrects 
     if(isset($_POST['old-username'], $_POST['new-username']) && !empty($_POST['old-username']) && !empty($_POST['new-username'])) 
     {
         $req = $bdd->prepare('SELECT * FROM account WHERE username = ?');
@@ -15,7 +16,8 @@ if(isset($_POST['updateusername']))
 
         if($requser == 1) 
         {
-
+        
+        // Si l'utilisateur existe alors on modifie son username
         $update = $bdd->prepare('UPDATE account SET username = ? WHERE id_user = ?');
         $update->execute(array($newusername, $_SESSION['id_user']));
 

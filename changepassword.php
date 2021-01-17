@@ -28,5 +28,5 @@
 </form>
 
 <?php $content = ob_get_clean(); ?>
-<?php require('footer.php'); ?>
 <?php require('view/frontend/template.php'); ?>
+<?php require('footer.php'); ?>

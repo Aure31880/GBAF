@@ -8,16 +8,18 @@ if(isset($_GET['t'], $_GET['id'], $_SESSION['id_user']) && !empty($_GET['t'])  &
     $getid = (int) $_GET['id'];
     $getavis = (int) $_GET['t'];
 
+    // Vérifie dans la bdd si l'utilisateur à déjà déposé un avis 
     $getvote = $bdd->prepare('SELECT vote FROM vote WHERE id_user = ? AND id_acteur = ?');
     $getvote->execute(array($user, $getid));
     $getvote = $getvote->fetch();
 
     if($getvote == 0)
     {
-
+    
     if($getavis == 1)
     {
         $getavis = 'Likes';
+        // Fonction ajout like
         $insertelike = $bdd->prepare('INSERT INTO vote (id_user, id_acteur, vote)VALUES (:id_user, :id_acteur, :vote)');
         $insertelike->execute(array(
             'id_user' => $user,
@@ -25,7 +27,8 @@ if(isset($_GET['t'], $_GET['id'], $_SESSION['id_user']) && !empty($_GET['t'])  &
             'vote' => $getavis ));
             $insertelike->closeCursor();
         header('Location: '.$_SERVER['HTTP_REFERER']);
-
+    
+    // Fonction ajout dislike
     } elseif($getavis == 2) {
         $getavis2 = 'Dislikes';
         $inserdislike = $bdd->prepare('INSERT INTO vote (id_user, id_acteur, vote)VALUES (:id_user, :id_acteur, :vote)');

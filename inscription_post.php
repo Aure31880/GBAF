@@ -3,7 +3,6 @@ require_once('model/Manager.php');
 
 if(isset($_POST['forminscription']))
 {
-    // on securise les entrées
     $name = htmlspecialchars($_POST['nom']);
     $firstName = htmlspecialchars($_POST['prenom']);
     $pseudo = htmlspecialchars($_POST['username']);
