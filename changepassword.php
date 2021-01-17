@@ -4,7 +4,7 @@
 
 
 <?php ob_start(); ?>
-<form method="post" action="changePassword_post.php">
+<form method="post" action="changepassword_post.php">
     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
         <h2 class="card-title">Nouveau password</h2>
         <div class="card-body">

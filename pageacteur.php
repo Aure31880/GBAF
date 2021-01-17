@@ -43,7 +43,7 @@ include('redirection.php');
               }
 
 // Récupération des commentaires 
-$getcomment = $bdd->prepare('SELECT *FROM account a INNER JOIN post  ON post.id_user = a.id_user WHERE id_acteur  = ? ');
+$getcomment = $bdd->prepare('SELECT *FROM account a INNER JOIN post  ON post.id_user = a.id_user WHERE id_acteur  = ? ORDER BY date_add DESC');
 $getcomment->execute(array($getid));
 
 
