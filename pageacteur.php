@@ -51,7 +51,7 @@ $getcountcomment = $getcountcomment->fetch();
 $countcomment = $getcountcomment['comment_count'];
 
 // Récupération des commentaires 
-$getcomment = $bdd->prepare('SELECT *FROM account a INNER JOIN post  ON post.id_user = a.id_user WHERE id_acteur  = ? ORDER BY date_add DESC');
+$getcomment = $bdd->prepare('SELECT *, DATE_FORMAT(p.date_add, \'%d-%m-%Y\')  AS date_add FROM post p INNER JOIN account a ON a.id_user = p.id_user WHERE id_acteur  = ? ORDER BY date_add DESC');
 $getcomment->execute(array($getid));
 
 // Reéupération des votes 
