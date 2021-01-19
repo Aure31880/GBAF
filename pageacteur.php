@@ -44,7 +44,7 @@ window.alert("interdit d'acces ! Vous ne pouvez commenter qu\'une seul fois !");
                   echo 'Selectionner un acteur  !';
               }
 
-$post = 'post';
+// Récupération du nombre de commentaire
 $getcountcomment = $bdd->prepare('SELECT COUNT(*) AS comment_count FROM post a WHERE id_acteur  = :acteur ');
 $getcountcomment->execute(array('acteur' =>$getid));
 $getcountcomment = $getcountcomment->fetch();
