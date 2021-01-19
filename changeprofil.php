@@ -14,7 +14,7 @@ session_start();
 </head>
 
 <body>
-<div class="container-fluid">
+<div class="user-info">
     <div class="info">
     <img src="images/logo.jpg" alt="logo-gbaf" class="img-thumbnail" id="img-logo-profil">
         <div class="info-name">
@@ -57,11 +57,10 @@ session_start();
   <label for="update-username" class="form-label">Nouveau username</label>
   <input type="text" class="form-control" id="update-username" name="new-username" placeholder="Nouveau username"><br>
 
-  <button type="submit" class="btn btn-success" name="updateusername">Modifier</button>
 </div>
-</form>
 
-<form method="post" action="updatepass_post.php">
+
+
 <div class="mb-3" id="update-profil">
 
 

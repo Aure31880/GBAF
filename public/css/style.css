@@ -2,11 +2,11 @@ html {
     height: 100%;
   }
   body {
-    min-height: 100%;
-    margin: 0;
+    margin: 0 ;
     padding: 0;
     background-color: #ffffff;
   }
+
 h1, h2, h3, h4, h5 {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
@@ -45,9 +45,6 @@ a:hover {
     margin-top: 70px;
     margin-left: 47em;
 }
-.form-connexion {
-    display: flexbox;
-}
 .card {
     margin-left: 41em;
 }
@@ -82,16 +79,12 @@ a:hover {
 /*...fin...*/
 
 /* page profil */
+
 .deconnexion {
     color: red;
 }
-.container-fluid {
+.user-info {
     background-color: #F2F4F4;
-    width: 100%;
-}
-.content {
-    background-color: #F2F4F4;
-    width: 100%;
 }
 .info-name a {
     float: right;
@@ -110,9 +103,11 @@ a:hover {
 .info img {
     margin-left: 50px;
 }
+.group-list {
+    background-color: #F2F4F4;
+}
 .presentation {
-    display: inline-block;
-    word-wrap: break-word;
+    margin-left: 50px;
 }
 .presentation p {
     word-wrap: break-word;
@@ -120,11 +115,24 @@ a:hover {
 .overflow-visible {
     white-space: pre-line;
 }
-#section-acteur-text {
+.section-acteur {
+    background-color: #F2F4F4;
+}
+.acteur-list {
     display: flex ;
+    margin-left: 50px;
+}
+.section-acteur-tiltle {
+    margin-left: 50px;
 }
 .container-list-acteur {
    margin: 0 50px;
+}
+.detail-acteur {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 .card-text {
     white-space: nowrap;
@@ -133,11 +141,12 @@ a:hover {
 }
 .card.mb-3{
     background-color: #DC7633;
-    margin-left: 15px;
+    margin-left: auto;
+    margin-right: auto;
 }
 #card-partenaire {
-    max-width: 80%;
-    height: 250px;
+    max-width: 90%;
+    height: 280px;
 }
 .btn.btn-secondary.btn-sm {
     float: right;
@@ -153,15 +162,12 @@ a:hover {
 /*...fin...*/
 
 /* page acteur */
+.acteur {
+    text-align: center;
+    background-color: #F2F4F4;
+}
 .rounded.mx-auto.d-block {
    width:40%;
-}
-.title-acteur {
-    margin-top: 30px;
-    margin-left: 15px;
-}
-.content-acteur {
-    margin-left: 15px;
 }
 a.likes, a.dislikes {
     color: black;
@@ -183,14 +189,16 @@ a.dislikes:hover {
     text-decoration: none;
     background-color: rgba(5, 56, 149, 0.4);
 }
-.p-2 {
-   margin-left: auto;
-}
-.d-flex.flex-row h3 {
+.notice h3 {
     margin-left: 15px;
 }
+.notice {
+    display: flex;
+    justify-content: space-around;
+}
+
 .card.bg-light.mb-3 {
-    max-width: 100%;
+    max-width: 90%;
     height : 300px;
 }
 /*...fin...*/
@@ -330,8 +338,12 @@ text-align: center;
         display: flex;
         flex-direction: column ! important;
     }
-    .p-2 {
-        margin: 0 15px;
+ 
+    .js-modal {
+        margin: 15 15 0;
+    }
+    .add-notice {
+        margin: 15 15 0;
     }
 }
 @media all and (max-width: 770px) {
