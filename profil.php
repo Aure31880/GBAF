@@ -5,7 +5,7 @@ include('redirection.php');
 
 ?>
 
-    <html>
+    <html lang="fr">
 
     <head>
         <title>Profil</title>
@@ -35,11 +35,11 @@ include('redirection.php');
                         <?= $_SESSION['nom'];?> <?= $_SESSION['prenom']; ?>
                     </h4>
                     <br>
-                    <div class="info-button">
-                        <a href="changeprofil.php" class="update">Modifier votre profil</a>
-                        <br />
-                        <a href="deconnexion.php" class="deconnexion">Se déconnecter</a>
-                    </div>
+                <div class="info-button">
+                    <a href="changeprofil.php" class="update">Modifier votre profil</a>
+                    <br />
+                    <a href="deconnexion.php" class="deconnexion">Se déconnecter</a>
+                </div>
                 </div>
             </div>
         </header>
@@ -129,7 +129,8 @@ while ($posts = $req->fetch())
                                 ?>
                                 <p class="card-text"><?=  substr( $reduc, 0,800 )?></p>
 
-                                <em><a href="pageacteur.php?id=<?= ($posts['id_acteur']); ?>">Lire la suite</a></em>
+                                <em><a href="pageacteur.php?id=<?= ($posts['id_acteur']); ?>" class="read-more">Lire la
+                                        suite</a></em>
                             </div>
                         </div>
                     </div>

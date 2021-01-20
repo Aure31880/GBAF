@@ -2,9 +2,11 @@
 <?php     require('header.php'); ?>
 <hr>
 <?php ob_start(); ?>
-<div class="card text-white bg-dark mb-3">
+<div class="card text-white bg-dark mb-3" id="card-2">
     <div class="card-body">
-        <h2 class="card-title">Inscription</h2>
+        <div class="card-title">
+            <h1>Inscription</h1>
+        </div>
         <form method="post" action="inscription_post.php" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Nom</label> :

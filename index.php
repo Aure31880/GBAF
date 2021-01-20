@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -15,15 +15,15 @@
     <hr>
     <div class="home">
     <div class="title-home">
-    <h2>Bienvenue sur l'application dédiée à la présentation des produits financiers du groupe</h2>
+    <h1>Bienvenue sur l'application dédiée à la présentation des produits financiers du groupe</h1>
 </div>
     <div class="card-2 text-white bg-dark mb-3" style="max-width: 25rem;">
         <div class="card-body">
             <h3 class="card-title">Bienvenue</h3><br>
             <p>Connectez vous à votre espace</p>
-            <p><a href="connexion.php" >Connexion</a></p><br>
+            <p><a href="connexion.php" class="bouton-redirection">Connexion</a></p><br>
             <p>Première visite ? Inscrivez-vous</p>
-            <p><a href="inscription.php">Inscription</a></p>
+            <p><a href="inscription.php" class="bouton-redirection">Inscription</a></p>
         </div>
     </div>
 </div>

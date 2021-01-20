@@ -6,9 +6,11 @@ session_start();
 <hr>
 
 <?php ob_start(); ?>
-    <div class="card text-white bg-dark mb-3" id="card-connect">
+    <div class="card text-white bg-dark mb-3" id="card-1">
         <form method="post" action="connexion_post.php">
-            <h2 class="card-title">Connexion</h2>
+            <div class="card-title">
+                <h1>Connexion</h1>
+            </div>
             <div class="card-body">
                 <div class="form-group">
                     <label for="username">Username</label> :
@@ -19,17 +21,17 @@ session_start();
                     <button type="submit" class="btn btn-success" name="forminscription">Envoyez</button><br>
                     <div class="content-card">
                         <p class="contenu texte-blanc">Mot de passe oublié ?</p>
-                        <p class="contenu texte-blanc"><a href="verifyuser.php" class="bouton blanc large">Modifer mot
+                        <p class="contenu texte-blanc"><a href="verifyuser.php" class="bouton-redirection">Modifer mot
                                 de passe</a></p>
                         <p class="contenu texte-blanc">Première visite ? Inscrivez-vous</p>
                         <p class="contenu texte-blanc"><a href="inscription.php"
-                                class="bouton blanc large">Inscription</a></p>
+                                class="bouton-redirection">Inscription</a></p>
                     </div>
                 </div>
             </div>
         </form>
     </div>
 
-<?php $content = ob_get_clean(); ?>
-<?php require('view/frontend/template.php'); ?>
-<?php require('footer.php'); ?>
+    <?php $content = ob_get_clean(); ?>
+    <?php require('view/frontend/template.php'); ?>
+    <?php require('footer.php'); ?>

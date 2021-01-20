@@ -5,8 +5,10 @@
 
 <?php ob_start(); ?>
 <form method="post" action="changepassword_post.php">
-    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
-        <h2 class="card-title">Password oublié</h2>
+    <div class="card text-white bg-dark mb-3" id="card-1" style="max-width: 30rem;">
+        <div class="card-title">
+            <h1>Password oublié</h1>
+        </div>
         <div class="card-body">
             <div class="form-group">
                 <label for="username">Username</label> :
@@ -22,10 +24,10 @@
                 <label for="reponse">Réponse</label> :
                 <input type="text " class="form-control" name="reponse" id="reponse" require /><br>
 
-                <button type="submit" class="btn btn-primary" name="changePass">Envoyez</button>
+                <button type="submit" class="btn btn-success" name="changePass">Envoyez</button>
                 <div class="content-card">
                     <p class="contenu texte-blanc">Première visite ? Inscrivez-vous</p>
-                    <p class="contenu texte-blanc"><a href="inscription.php" class="bouton blanc large">Inscription</a>
+                    <p class="contenu texte-blanc"><a href="inscription.php" class="bouton-redirection">Inscription</a>
                     </p>
                 </div>
             </div>

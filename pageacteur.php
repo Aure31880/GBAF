@@ -8,11 +8,12 @@ include('redirection.php');
       {
               $getid = htmlspecialchars($_GET['id']);
 
-              
+              //Répération des données de l'acteur selectionné
               $req = $bdd->prepare('SELECT * FROM acteur WHERE id_acteur = ?');
               $req->execute(array($getid));
               $reqacteur = $req->rowCount();
 
+                //Récupération des commentaires correspondant à l'acteur
                   $reqcomt = $bdd->prepare('SELECT * FROM post WHERE id_user = ? AND id_acteur = ?');
                   $reqcomt->execute(array($_SESSION['id_user'], $getid));
                   $reqcomt = $reqcomt->fetch();
@@ -65,7 +66,7 @@ $getdislikes->execute(array('acteur' => $getid, 'Dislikes_' => 'Dislikes'));
 $getdislikes = $getdislikes->fetch();
 $dislike_count = $getdislikes['dislike_count'];
 ?>
-<html>
+<html lang="fr">
 
 <head>
     <title>Profil</title>
@@ -97,15 +98,15 @@ $dislike_count = $getdislikes['dislike_count'];
                 <br>
                 <div class="info-button">
                     <a class="back-profil" href="profil.php"> Retour à la page
-                        profil</a></em>
+                        profil</a>
                 </div>
             </div>
-    </header>
+            </div>
     <?php
 while($infoacteur = $req->fetch())
 {
 ?>
-    </div>
+    </header>
     <hr>
 
     <!-- Section acteurs -->
@@ -117,7 +118,7 @@ while($infoacteur = $req->fetch())
             </div>
             <br>
             <div class="title-acteur">
-                <h2><?= htmlspecialchars($infoacteur['acteur']); ?></h2>
+                <h1><?= htmlspecialchars($infoacteur['acteur']); ?></h1>
             </div>
             <div class="content-acteur">
                 <p><?= nl2br(htmlspecialchars($infoacteur['description'])); ?>

@@ -1,5 +1,5 @@
 html {
-    height: 100%;
+
   }
   body {
     margin: 0 ;
@@ -19,7 +19,7 @@ a:hover {
 
 /* header */
 .banner {
-    background-color:#F2F4F4 ;
+background-color: #F2F4F4;
     width: 100%;
 }
 #rounded {
@@ -31,14 +31,14 @@ a:hover {
 
 /* page accueil*/
 #logo-index {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: auto;
 }
 .img-thumbnail {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: auto;
 }
-.title-home h2{
+.title-home h1{
     text-align: center;
 }
 .card-2 {
@@ -51,7 +51,7 @@ a:hover {
 .card-body {
     height: 100%;
 }
-.card-title {
+.card-title h1 {
     text-align: center;
 }
  .form-group {
@@ -76,6 +76,22 @@ a:hover {
     margin-right: auto;
     width: 30%;
 }
+.btn.btn-success {
+    background-color: black;
+    color: white;
+    box-shadow: none;
+    border: none;
+    outline:0;
+}
+.btn.btn-success:hover {
+    background-color: rgba(255, 0, 0, 0.678);
+}
+.bouton-redirection {
+    color: red;
+}
+.bouton-redirection:hover {
+    color: black;
+}
 /*...fin...*/
 
 /* page profil */
@@ -91,11 +107,18 @@ a:hover {
 }
 .info-name {
     float: right;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-right: 30px;
+    color: black;
+}
+.info-button {
     margin-top: 15px;
     margin-right: 30px;
 }
 .info-button a{
-        color: #0E487E;
+    color: black;
 }
 .info-button a:hover{
     color: red;
@@ -140,9 +163,15 @@ a:hover {
     text-overflow: ellipsis;
 }
 .card.mb-3{
-    background-color: #DC7633;
+    background-color: white;
     margin-left: auto;
     margin-right: auto;
+}
+.read-more {
+    color: red;
+}
+.read-more:hover{
+    color: black;
 }
 #card-partenaire {
     max-width: 90%;
@@ -152,7 +181,7 @@ a:hover {
     float: right;
 }
 .footer-profil {
-    position: fixed;
+ 
     left: 0;
     bottom: 0;
     width: 100%;
@@ -187,7 +216,7 @@ a.dislikes:hover {
 .js-modal:hover {
     color: white;
     text-decoration: none;
-    background-color: rgba(5, 56, 149, 0.4);
+    background-color: rgba(255, 0, 0, 0.678);
 }
 .notice h3 {
     margin-left: 15px;
@@ -243,6 +272,8 @@ text-align: center;
     vertical-align:top;
     font-size:13px;
     color: black;
+    
+    
 }
 .back {
     position: absolute;
@@ -251,7 +282,7 @@ text-align: center;
 }
 .back a {
     text-decoration: none;
-    color: rgb(14, 72, 126);
+    color: black;
 }
 /*...fin...*/
 
@@ -270,13 +301,14 @@ text-align: center;
 /* page index, connexion et inscription */
 @media all and (max-width: 455px) {
     #logo-index {
-        width: 100px;
-        height: 100px;
+        width: 90px;
+        height: auto;
     }
    .card.text-white.bg-dark.mb-3 {
     margin-left: auto;
     margin-right: auto;
     width: 90%;
+    height: auto;
 }
 }
 @media screen and (max-width: 1200px) {
@@ -289,9 +321,8 @@ text-align: center;
         width: 40%;
     }
 }
-
 @media all and (max-width: 550px) {
-    .title-home h2{
+    .title-home h1{
         font-size: x-large;
     }
     .content{
@@ -302,23 +333,28 @@ text-align: center;
         display: flex;
         flex-direction: column ;
     }
-    
     #img-logo-profil {
         margin: auto;
     }
-  
+    .info-name h4{
+        margin: auto;
+        white-space: nowrap;
+    }   
     .info-name {
         margin: auto;
         white-space: nowrap;
     }   
     .info-button {
+        margin: auto;
         display: flex;
        white-space: nowrap;
     }
-    
-
     .deconnexion {
     margin: 0 10px;
+}
+.acteur-list {
+    display: flex;
+    flex-direction: column;
 }
    #section-acteur-text {
     display: flex;
@@ -347,10 +383,20 @@ text-align: center;
     }
 }
 @media all and (max-width: 770px) {
-    .card.text-white.bg-dark.mb-3 {
+    #card-1 {
         margin-left: auto;
         margin-right: auto;
-        width: 70%;
+        height: 70%;
+        width: auto;
+        overflow-y: hidden;
+    }
+    #card-2 {
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+    }
+    .content-card{
+        margin: 10px 0px;
     }
     #card-partenaire {
         height: 300px;
@@ -364,6 +410,16 @@ text-align: center;
     #update-profil {
         width: 80%;
        margin: auto;
+    }
+    .footer-content {
+        text-align: center;
+        padding: 0 0 5px;
+        width:100%;
+        display:inline-block;
+        vertical-align:top;
+        font-size:13px;
+        color: black;
+        
     }
 }
 
